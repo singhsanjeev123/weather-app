@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather App</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-200 to-indigo-300 min-h-screen flex items-center justify-center p-4">
+
+  <div class="bg-white shadow-xl rounded-2xl p-6 max-w-md w-full space-y-6">
+    <h1 class="text-2xl font-bold text-center text-indigo-600">Weather App</h1>
+    <br>
+    <div class="flex space-x-2">
+      <input
+        id="cityInput"
+        type="text"
+        placeholder="Enter city"
+        class="w-full flex-grow px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
+      />
+    </div>
+    <button
+        onclick="getWeather()"
+        class="w-full px-4 py-2 bg-indigo-500 text-white rounded-xl hover:bg-indigo-600"
+      >
+        Search
+      </button>
+    <div id="weatherResult" class="text-center text-gray-700">
+      <p>Enter a city to get weather information.</p>
+    </div>
+  </div>
+
+  <footer class="fixed bottom-0 w-full bg-white text-center py-2 shadow-md text-sm text-gray-600">
+    Design and Develop by 
+    <span class="font-semibold text-indigo-600">Sanjeev ❤️ Sonam</span>
+  </footer>
+  
+
+
+  <script src="script.js"></script>
+  
+</body>
+</html>
