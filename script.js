@@ -9,22 +9,26 @@ async function getWeather() {
   
     resultDiv.innerHTML = "<p class='text-gray-500'>Fetching weather...</p>";
   
-    try {
-      const apiKey = "b6907d289e10d714a6e88b30761fae22"; // OpenWeatherMap default key (use real one for production)
-      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
+    const apiKey = '1e8a5bd8f1524ef792d184330250605';  // Your API key from WeatherAPI
   
-      if (!response.ok) {
-        throw new Error("Failed to fetch weather data. Please try again.");
+    try {
+      // Fetch weather data from WeatherAPI
+      const weatherResponse = await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`);
+      const weatherData = await weatherResponse.json();
+  
+      if (weatherData.error) {
+        resultDiv.innerHTML = `<p class='text-red-500'>${weatherData.error.message}</p>`;
+        return;
       }
   
-      const data = await response.json();
+      const weather = weatherData.current;
   
       resultDiv.innerHTML = `
         <div class="space-y-2">
-          <h2 class="text-xl font-semibold text-indigo-700">${data.name}, ${data.sys.country}</h2>
-          <p class="text-lg">🌡️ ${data.main.temp}°C, ${data.weather[0].description}</p>
-          <p>💨 Wind: ${data.wind.speed} m/s</p>
-          <p>🌅 Last Updated: ${new Date().toLocaleTimeString()}</p>
+          <h2 class="text-xl font-semibold text-indigo-700">${weatherData.location.name}, ${weatherData.location.country}</h2>
+          <p class="text-lg">🌡️ ${weather.temp_c}°C, ${weather.condition.text}</p>
+          <p>💨 Wind: ${weather.wind_kph} km/h</p>
+          <p>🌅 Last Updated: ${new Date(weather.last_updated_epoch * 1000).toLocaleTimeString()}</p>
         </div>
       `;
     } catch (error) {
