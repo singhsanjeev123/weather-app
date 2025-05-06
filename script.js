@@ -31,23 +31,4 @@ async function getWeather() {
     }
   }
 
-  const animationDiv = document.getElementById("weatherAnimation");
-const condition = data.current.condition.text.toLowerCase();
-
-// Clear previous animation
-animationDiv.innerHTML = "";
-
-// Add matching animation
-if (condition.includes("sun") || condition.includes("clear")) {
-  animationDiv.innerHTML = "☀️";
-} else if (condition.includes("cloud")) {
-  animationDiv.innerHTML = "☁️";
-} else if (condition.includes("rain")) {
-  animationDiv.innerHTML = "🌧️";
-} else if (condition.includes("snow")) {
-  animationDiv.innerHTML = "❄️";
-} else if (condition.includes("storm") || condition.includes("thunder")) {
-  animationDiv.innerHTML = "⛈️";
-} else {
-  animationDiv.innerHTML = "🌈";
-}
+ 
