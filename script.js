@@ -1,8 +1,3 @@
- const proxy = "https://corsproxy.io/?";
-const url = "https://api.weatherapi.com/v1/current.json?key=1e8a5bd8f1524ef792d184330250605&q=${city}&aqi=no";
-
-fetch(proxy + encodeURIComponent(url))
-
 async function getWeather() {
     const city = document.getElementById("cityInput").value.trim();
     const resultDiv = document.getElementById("weatherResult");
@@ -16,7 +11,7 @@ async function getWeather() {
   
     try {
       const apiKey = "1e8a5bd8f1524ef792d184330250605"; // Replace with your actual API key if different
-      const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=1e8a5bd8f1524ef792d184330250605&q=${city}&aqi=no`);
+      const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=1e8a5bd8f1524ef792d184330250605&q=${city}&aqi=no`);
   
       if (!response.ok) {
         throw new Error("Failed to fetch data");
